@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thoty — Práctica: Pago de servicios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/banca.css">
+</head>
+<body>
+
+<!-- ============ HEADER THOTY (fuera de la simulación) ============ -->
+<header class="header">
+  <div class="header__inner">
+    <a href="../dashboard.html" class="marca">
+      <img src="../assets/img/thot-feliz.png" alt="" class="marca__icono">
+      <span class="marca__nombre">Tho<span>ty</span></span>
+    </a>
+    <div class="header__acciones">
+      <a href="../dashboard.html" class="btn btn-secundario">← Salir de la práctica</a>
+    </div>
+  </div>
+</header>
+<div style="background:#fff3cd; color:#7a5b00; text-align:center; font-size:0.85rem; font-weight:700; padding:6px 12px;">
+  Estás dentro de una simulación de práctica de Thoty. No es la aplicación real de tu banco ni está conectada a ninguna cuenta real.
+</div>
+
+<!-- ======================================================================
+     VISTA 1 — INTRO
+     ====================================================================== -->
+<section id="vista-intro" class="seccion" style="padding-top:56px;">
+  <div class="contenedor" style="max-width:640px; text-align:center;">
+    <img src="../assets/img/thot-explicando.png" alt="Thot explicando" style="width:150px; margin:0 auto 20px;">
+    <span class="seccion__etiqueta">Práctica guiada</span>
+    <h1 class="seccion__titulo">Vamos a practicar el pago de un servicio</h1>
+    <p class="seccion__texto" style="margin-bottom:30px;">
+      Primero te voy a explicar cada paso con calma, sin prisas. Cuando te sientas
+      listo, tú decides cuándo avanzar. Al final, harás el pago completo tú solo,
+      para comprobar qué tanto aprendiste. Recuerda: nada de esto es real, así
+      que no hay ningún riesgo.
+    </p>
+    <button class="btn btn-primario btn-grande" id="btnIniciar">Comenzar</button>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 2 — INICIO DE LA BANCA (simulada)
+     ====================================================================== -->
+<section id="vista-inicio" class="oculto">
+  <div class="banca-topbar">
+    <div class="banca-topbar__marca">
+      <img src="../assets/img/bbva-logo.png" alt="BBVA" style="height:24px; width:auto;">
+      <span class="banca-topbar__nombre">Banca Digital · Práctica</span>
+    </div>
+    <div class="banca-topbar__usuario">
+      <span class="solo-desktop">Hola, <strong id="nombreTopbar1">Cliente</strong></span>
+      <span class="banca-topbar__perfil"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#fff" stroke-width="2"/><path d="M4 21C4 17 7.5 14 12 14C16.5 14 20 17 20 21" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <a href="../dashboard.html" class="banca-topbar__salir">Salir</a>
+    </div>
+  </div>
+  <nav class="banca-nav">
+    <div class="banca-nav__item" data-simple="true">
+      <button class="banca-nav__boton">Inicio</button>
+    </div>
+
+    <div class="banca-nav__item">
+      <button class="banca-nav__boton">Transferir
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="banca-nav__dropdown">
+        <div class="banca-nav__grupo-titulo">Realizar una transferencia</div>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">A cuentas BBVA y otros bancos <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Disposición de tarjeta de crédito <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Transferencia internacional <span class="etiqueta-proximamente">Próximamente</span></button>
+      </div>
+    </div>
+
+    <div class="banca-nav__item con-activa" id="navPagar">
+      <button class="banca-nav__boton">Pagar
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="banca-nav__dropdown">
+        <div class="banca-nav__grupo-titulo">Realizar un pago</div>
+        <button class="banca-nav__opcion" id="opcionPagarActiva">De servicios</button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">A cuentas BBVA y otros bancos <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">A tarjeta de crédito <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Impuestos <span class="etiqueta-proximamente">Próximamente</span></button>
+      </div>
+    </div>
+
+    <div class="banca-nav__item">
+      <button class="banca-nav__boton">Contratar/Comprar
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="banca-nav__dropdown">
+        <div class="banca-nav__grupo-titulo">Productos</div>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Tarjeta de crédito <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Cuentas <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Seguros <span class="etiqueta-proximamente">Próximamente</span></button>
+      </div>
+    </div>
+
+    <div class="banca-nav__item">
+      <button class="banca-nav__boton">Invertir
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="banca-nav__dropdown">
+        <div class="banca-nav__grupo-titulo">Comienza tu inversión</div>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Fondos de inversión <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Pagaré <span class="etiqueta-proximamente">Próximamente</span></button>
+      </div>
+    </div>
+
+    <div class="banca-nav__item">
+      <button class="banca-nav__boton">Administrar
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="banca-nav__dropdown">
+        <div class="banca-nav__grupo-titulo">Contratos</div>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Alertas BBVA <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Domiciliación <span class="etiqueta-proximamente">Próximamente</span></button>
+      </div>
+    </div>
+
+    <div class="banca-nav__item">
+      <button class="banca-nav__boton">Consultar
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="banca-nav__dropdown">
+        <div class="banca-nav__grupo-titulo">Movimientos</div>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Estado de cuenta <span class="etiqueta-proximamente">Próximamente</span></button>
+        <button class="banca-nav__opcion banca-nav__opcion--bloqueada">Saldo <span class="etiqueta-proximamente">Próximamente</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="banca-fondo">
+    <div class="banca-contenedor">
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; align-items:start;">
+        <div>
+          <div class="mis-cuentas">
+            <div class="mis-cuentas__titulo">Mis Cuentas</div>
+
+            <div class="fila-cuenta">
+              <div class="fila-cuenta__info">
+                <div class="fila-cuenta__icono">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="9" rx="1" stroke="#094fa4" stroke-width="2"/><path d="M3 10L12 4L21 10" stroke="#094fa4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div class="fila-cuenta__nombre">Cuenta de Débito</div>
+                  <div class="fila-cuenta__numero">•••• 4521 · M.N.</div>
+                </div>
+              </div>
+              <div class="fila-cuenta__saldo">$12,480.00</div>
+            </div>
+
+            <div class="fila-cuenta">
+              <div class="fila-cuenta__info">
+                <div class="fila-cuenta__icono">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#094fa4" stroke-width="2"/><path d="M3 10H21" stroke="#094fa4" stroke-width="2"/></svg>
+                </div>
+                <div>
+                  <div class="fila-cuenta__nombre">Tarjeta de Crédito Oro</div>
+                  <div class="fila-cuenta__numero">•••• 9821 · M.N.</div>
+                </div>
+              </div>
+              <div class="fila-cuenta__saldo">$3,250.00</div>
+            </div>
+          </div>
+
+          <div class="thot-guia">
+            <img src="../assets/img/thot-explicando.png" alt="" class="thot-guia__figura">
+            <div>
+              <div class="thot-guia__titulo">Esta es la pantalla de inicio</div>
+              <div class="thot-guia__texto">
+                Para pagar un recibo de luz, agua o teléfono, busca el menú
+                <strong>"Pagar"</strong> en la parte de arriba, y dentro de él la
+                opción <strong>"De servicios"</strong>. Adelante, pruébalo.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel-lateral">
+            <div class="panel-lateral__titulo">Operaciones Rápidas</div>
+            <div class="panel-lateral__vacio">No hay operaciones rápidas todavía.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 3 — TUTORIAL GUIADO (4 pasos)
+     ====================================================================== -->
+<section id="vista-tutorial" class="oculto">
+  <div class="banca-topbar">
+    <div class="banca-topbar__marca">
+      <img src="../assets/img/bbva-logo.png" alt="BBVA" style="height:24px; width:auto;">
+      <span class="banca-topbar__nombre">Pagar servicios</span>
+    </div>
+    <div class="banca-topbar__usuario">
+      <span class="solo-desktop">Hola, <strong id="nombreTopbar2">Cliente</strong></span>
+      <span class="banca-topbar__perfil"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#fff" stroke-width="2"/><path d="M4 21C4 17 7.5 14 12 14C16.5 14 20 17 20 21" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <a href="../dashboard.html" class="banca-topbar__salir">Salir</a>
+    </div>
+  </div>
+
+  <div class="banca-fondo">
+    <div class="banca-contenedor">
+      <div class="panel-banca">
+        <div class="stepper">
+          <div class="stepper__paso" data-paso="1"></div>
+          <div class="stepper__paso" data-paso="2"></div>
+          <div class="stepper__paso" data-paso="3"></div>
+          <div class="stepper__paso" data-paso="4"></div>
+          <span class="stepper__texto" id="stepperTexto">Paso 1 de 4</span>
+        </div>
+
+        <div class="thot-guia">
+          <img src="../assets/img/thot-explicando.png" alt="" class="thot-guia__figura" id="thotGuiaFigura">
+          <div>
+            <div class="thot-guia__titulo" id="thotGuiaTitulo">Tipo de servicio</div>
+            <div class="thot-guia__texto" id="thotGuiaTexto">
+              Elige qué tipo de recibo quieres pagar: luz, agua, teléfono u otro servicio.
+            </div>
+          </div>
+        </div>
+
+        <!-- Paso 1: tipo de servicio -->
+        <div class="campo-banca tutorial-paso" data-paso="1">
+          <label for="t_tipo">Tipo de servicio</label>
+          <select id="t_tipo">
+            <option>Luz (CFE)</option>
+          </select>
+        </div>
+
+        <!-- Paso 2: número de referencia -->
+        <div class="campo-banca tutorial-paso oculto" data-paso="2">
+          <label for="t_referencia">Número de referencia o contrato</label>
+          <input type="text" id="t_referencia" readonly>
+          <div class="campo-banca__ayuda">Lo encuentras impreso en tu recibo. Escríbelo con cuidado, sin espacios.</div>
+        </div>
+
+        <!-- Paso 3: monto -->
+        <div class="campo-banca tutorial-paso oculto" data-paso="3">
+          <label for="t_monto">Monto a pagar</label>
+          <input type="text" id="t_monto" readonly>
+          <div class="campo-banca__ayuda">Revisa que coincida con el total que aparece en tu recibo.</div>
+        </div>
+
+        <!-- Paso 4: confirmación -->
+        <div class="tutorial-paso oculto" data-paso="4">
+          <div class="resumen-operacion">
+            <div class="resumen-operacion__fila">
+              <span class="resumen-operacion__etiqueta">Servicio</span>
+              <span class="resumen-operacion__valor">Luz (CFE)</span>
+            </div>
+            <div class="resumen-operacion__fila">
+              <span class="resumen-operacion__etiqueta">Referencia</span>
+              <span class="resumen-operacion__valor">552013489021</span>
+            </div>
+            <div class="resumen-operacion__fila">
+              <span class="resumen-operacion__etiqueta">Monto</span>
+              <span class="resumen-operacion__valor">$487.00</span>
+            </div>
+            <div class="resumen-operacion__fila">
+              <span class="resumen-operacion__etiqueta">Cuenta de cargo</span>
+              <span class="resumen-operacion__valor">•••• 4521</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="acciones-paso">
+          <button class="btn btn-secundario" id="btnAtras" disabled>Atrás</button>
+          <button class="btn btn-primario" id="btnSiguiente">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 4 — ÉXITO DEL TUTORIAL
+     ====================================================================== -->
+<section id="vista-exito-tutorial" class="seccion oculto" style="padding-top:64px;">
+  <div class="contenedor" style="max-width:520px;">
+    <div class="pantalla-exito">
+      <img src="../assets/img/thot-celebrando.png" alt="Thot celebrando" class="pantalla-exito__figura">
+      <h2>¡Muy bien! Ya conoces los pasos</h2>
+      <p>Ahora te toca practicar tú solo, sin ninguna ayuda. Vas a recibir una
+        pequeña instrucción y tendrás que completar el pago por tu cuenta.</p>
+      <button class="btn btn-primario btn-grande" id="btnIrPractica">Practicar sin ayuda</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 5 — PRÁCTICA REAL (sin ayuda)
+     ====================================================================== -->
+<section id="vista-practica" class="oculto">
+  <div class="banca-topbar">
+    <div class="banca-topbar__marca">
+      <img src="../assets/img/bbva-logo.png" alt="BBVA" style="height:24px; width:auto;">
+      <span class="banca-topbar__nombre">Pagar servicios</span>
+    </div>
+    <div class="banca-topbar__usuario">
+      <span class="solo-desktop">Hola, <strong id="nombreTopbar3">Cliente</strong></span>
+      <span class="banca-topbar__perfil"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#fff" stroke-width="2"/><path d="M4 21C4 17 7.5 14 12 14C16.5 14 20 17 20 21" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <a href="../dashboard.html" class="banca-topbar__salir">Salir</a>
+    </div>
+  </div>
+
+  <div class="banca-fondo">
+    <div class="banca-contenedor">
+      <div class="panel-banca">
+        <div class="panel-banca__titulo">Nuevo pago de servicio</div>
+        <div class="panel-banca__subtitulo">Completa el formulario tú solo. Si algo está mal, te lo diremos para que lo corrijas.</div>
+
+        <div class="mision">
+          <div class="mision__icono">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5V11C4 16 7.5 20.5 12 22C16.5 20.5 20 16 20 11V5L12 2Z" stroke="#a67c00" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="mision__titulo">Tu misión</div>
+            <div class="mision__texto">
+              Paga el recibo de <strong>Agua</strong>, con número de referencia
+              <strong>778851234900</strong>, por un monto de <strong>$342.50</strong>.
+            </div>
+          </div>
+        </div>
+
+        <form id="formPractica" novalidate>
+          <div class="campo-banca">
+            <label for="p_tipo">Tipo de servicio</label>
+            <select id="p_tipo">
+              <option>Luz (CFE)</option>
+              <option>Agua</option>
+              <option>Teléfono / Internet</option>
+            </select>
+          </div>
+
+          <div class="campo-banca" id="grupoReferencia">
+            <label for="p_referencia">Número de referencia o contrato</label>
+            <input type="text" id="p_referencia" placeholder="12 dígitos" inputmode="numeric" maxlength="12">
+            <div class="campo-banca__error">La referencia debe tener exactamente 12 dígitos.</div>
+          </div>
+
+          <div class="campo-banca" id="grupoMonto">
+            <label for="p_monto">Monto a pagar</label>
+            <input type="text" id="p_monto" placeholder="$0.00" inputmode="decimal">
+            <div class="campo-banca__error">Ingresa un monto válido, mayor a $0.00.</div>
+          </div>
+
+          <div class="acciones-paso" style="justify-content:flex-end;">
+            <button type="submit" class="btn btn-primario btn-grande">Revisar pago</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 6 — REVISIÓN ANTES DE CONFIRMAR
+     ====================================================================== -->
+<section id="vista-revision" class="oculto">
+  <div class="banca-topbar">
+    <div class="banca-topbar__marca">
+      <img src="../assets/img/bbva-logo.png" alt="BBVA" style="height:24px; width:auto;">
+      <span class="banca-topbar__nombre">Confirmar pago</span>
+    </div>
+    <div class="banca-topbar__usuario">
+      <a href="../dashboard.html" class="banca-topbar__salir">Salir</a>
+    </div>
+  </div>
+
+  <div class="banca-fondo">
+    <div class="banca-contenedor">
+      <div class="panel-banca">
+        <div class="panel-banca__titulo">Revisa antes de confirmar</div>
+        <div class="panel-banca__subtitulo">Una vez confirmado, el pago no se puede deshacer. Revisa bien los datos.</div>
+
+        <div class="resumen-operacion">
+          <div class="resumen-operacion__fila">
+            <span class="resumen-operacion__etiqueta">Servicio</span>
+            <span class="resumen-operacion__valor" id="rev_tipo"></span>
+          </div>
+          <div class="resumen-operacion__fila">
+            <span class="resumen-operacion__etiqueta">Referencia</span>
+            <span class="resumen-operacion__valor" id="rev_referencia"></span>
+          </div>
+          <div class="resumen-operacion__fila">
+            <span class="resumen-operacion__etiqueta">Monto</span>
+            <span class="resumen-operacion__valor" id="rev_monto"></span>
+          </div>
+        </div>
+
+        <div class="acciones-paso">
+          <button class="btn btn-secundario" id="btnCorregir">Corregir datos</button>
+          <button class="btn btn-primario btn-grande" id="btnConfirmarPago">Confirmar pago</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 7 — ÉXITO FINAL
+     ====================================================================== -->
+<section id="vista-exito-final" class="seccion oculto" style="padding-top:64px;">
+  <div class="contenedor" style="max-width:520px;">
+    <div class="pantalla-exito">
+      <div class="pantalla-exito__check">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none"><path d="M5 13L9 17L19 7" stroke="#388e3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2>¡Pago realizado con éxito!</h2>
+      <p>Completaste tú solo el proceso completo de pago de servicio.
+        Puedes repetir esta práctica las veces que quieras.</p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-secundario" id="btnRepetir">Practicar de nuevo</button>
+        <a href="../dashboard.html" class="btn btn-primario">Volver a mis prácticas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../assets/js/banca-nav.js"></script>
+<script src="../assets/js/pago-servicios.js"></script>
+</body>
+</html>

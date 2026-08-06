@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thoty — Práctica: Detecta fraudes y phishing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/banca.css">
+</head>
+<body>
+
+<!-- ============ HEADER THOTY (fuera de la simulación) ============ -->
+<header class="header">
+  <div class="header__inner">
+    <a href="../dashboard.html" class="marca">
+      <img src="../assets/img/thot-feliz.png" alt="" class="marca__icono">
+      <span class="marca__nombre">Tho<span>ty</span></span>
+    </a>
+    <div class="header__acciones">
+      <a href="../dashboard.html" class="btn btn-secundario">← Salir de la práctica</a>
+    </div>
+  </div>
+</header>
+<div style="background:#fff3cd; color:#7a5b00; text-align:center; font-size:0.85rem; font-weight:700; padding:6px 12px;">
+  Estás dentro de una simulación de práctica de Thoty. Los mensajes que verás aquí son ejemplos creados para enseñar, no correos, SMS ni llamadas reales.
+</div>
+
+<!-- ======================================================================
+     VISTA 1 — INTRO
+     ====================================================================== -->
+<section id="vista-intro" class="seccion" style="padding-top:56px;">
+  <div class="contenedor" style="max-width:640px; text-align:center;">
+    <img src="../assets/img/thot-explicando.png" alt="Thot explicando" style="width:150px; margin:0 auto 20px;">
+    <span class="seccion__etiqueta">Práctica guiada</span>
+    <h1 class="seccion__titulo">Aprende a identificar phishing y estafas</h1>
+    <p class="seccion__texto" style="margin-bottom:30px;">
+      Te voy a mostrar las formas más comunes en que llegan las estafas hoy en día:
+      correos falsos, SMS y WhatsApp falsos, llamadas de "tu banco" y cuentas
+      falsas para depósitos. Primero te explico con calma, con ejemplos reales
+      de cómo se ven. Después vas a revisar una bandeja con varios mensajes y
+      tendrás que decidir tú mismo cuáles son seguros y cuáles son estafas.
+    </p>
+    <button class="btn btn-primario btn-grande" id="btnIniciar">Comenzar</button>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 2 — TUTORIAL GUIADO (6 pasos)
+     ====================================================================== -->
+<section id="vista-tutorial" class="seccion oculto" style="padding-top:40px;">
+  <div class="contenedor" style="max-width:760px;">
+    <div class="panel-banca">
+      <div class="stepper">
+        <div class="stepper__paso" data-paso="1"></div>
+        <div class="stepper__paso" data-paso="2"></div>
+        <div class="stepper__paso" data-paso="3"></div>
+        <div class="stepper__paso" data-paso="4"></div>
+        <div class="stepper__paso" data-paso="5"></div>
+        <div class="stepper__paso" data-paso="6"></div>
+        <span class="stepper__texto" id="stepperTexto">Paso 1 de 6</span>
+      </div>
+
+      <div class="thot-guia">
+        <img src="../assets/img/thot-explicando.png" alt="" class="thot-guia__figura" id="thotGuiaFigura">
+        <div>
+          <div class="thot-guia__titulo" id="thotGuiaTitulo">¿Qué es el phishing?</div>
+          <div class="thot-guia__texto" id="thotGuiaTexto">
+            Es cuando alguien se hace pasar por tu banco o por una empresa conocida
+            para robarte tu información o tu dinero. Vamos a ver, uno por uno, los
+            disfraces que más usan.
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 1: qué es el phishing -->
+      <div class="tutorial-paso" data-paso="1">
+        <p style="color:var(--gris-700,#3a4354); font-size:1rem; line-height:1.6;">
+          El phishing casi siempre busca lo mismo: que actúes rápido, sin pensar,
+          por miedo o por ilusión de un premio. Puede llegar por correo, por SMS,
+          por WhatsApp, por teléfono, o incluso disfrazado de un "comprobante de
+          depósito". En los siguientes pasos te muestro ejemplos reales de cada
+          uno, y cómo distinguirlos de un mensaje verdadero de tu banco.
+        </p>
+      </div>
+
+      <!-- Paso 2: correos falsos -->
+      <div class="tutorial-paso oculto" data-paso="2">
+        <p style="color:var(--gris-700,#3a4354); margin-bottom:4px; font-weight:700;">
+          Así se ve un ejemplo real de correo falso:
+        </p>
+        <div class="mock-correo">
+          <div class="mock-correo__cabecera">
+            <div><strong>De:</strong> BBVA México &lt;notificaciones@<span class="mock-correo__remitente-sospechoso">bbva-mx-verificacion.com</span>&gt;</div>
+            <div><strong>Asunto:</strong> Tu cuenta será suspendida en 24 horas</div>
+          </div>
+          <div class="mock-correo__cuerpo">
+            <p>Estimado cliente, detectamos actividad inusual en tu cuenta. Da clic en el siguiente botón para verificar tus datos y evitar la suspensión de tu cuenta.</p>
+            <span class="mock-correo__boton-falso">Verificar mi cuenta ahora</span>
+            <span class="mock-correo__enlace-real">Enlace real: http://bbva-mx-verificacion.com/login.php</span>
+          </div>
+        </div>
+        <div>
+          <span class="bandera-roja">🚩 El dominio no es bbva.mx</span>
+          <span class="bandera-roja">🚩 Genera miedo y urgencia</span>
+          <span class="bandera-roja">🚩 Pide hacer clic para "verificar"</span>
+        </div>
+      </div>
+
+      <!-- Paso 3: SMS y WhatsApp falsos -->
+      <div class="tutorial-paso oculto" data-paso="3">
+        <p style="color:var(--gris-700,#3a4354); margin-bottom:4px; font-weight:700;">
+          Así se ve un SMS falso (smishing):
+        </p>
+        <div class="mock-chat">
+          <div class="mock-chat__cabecera">💬 Mensaje de texto · BBVA-INFO</div>
+          <div class="mock-chat__burbuja">
+            ¡Felicidades! Ganaste $5,000 MXN en la Rifa BBVA 2026. Reclama tu premio aquí: <span class="mock-chat__enlace">bit.ly/premiobbva24</span>. Oferta válida solo por hoy.
+          </div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <span class="bandera-roja">🚩 Premio inesperado</span>
+          <span class="bandera-roja">🚩 Enlace acortado</span>
+          <span class="bandera-roja">🚩 Presión de tiempo ("solo por hoy")</span>
+        </div>
+        <p style="color:var(--gris-700,#3a4354); margin:16px 0 4px; font-weight:700;">
+          Y así uno de WhatsApp, haciéndose pasar por una persona real:
+        </p>
+        <div class="mock-chat mock-chat--whatsapp">
+          <div class="mock-chat__cabecera">🟢 WhatsApp · "Ana - Soporte BBVA"</div>
+          <div class="mock-chat__burbuja">
+            Hola 👋 Soy Ana, del área de seguridad de BBVA. Notamos actividad sospechosa en tu cuenta. Para protegerte, compárteme el código de 6 dígitos que te acaba de llegar por SMS.
+          </div>
+        </div>
+        <div>
+          <span class="bandera-roja">🚩 Pide el código de verificación</span>
+          <span class="bandera-roja">🚩 Ningún banco contacta por WhatsApp para esto</span>
+        </div>
+      </div>
+
+      <!-- Paso 4: llamadas falsas (vishing) -->
+      <div class="tutorial-paso oculto" data-paso="4">
+        <p style="color:var(--gris-700,#3a4354); margin-bottom:4px; font-weight:700;">
+          Así suena una llamada de estafa (vishing):
+        </p>
+        <div class="mock-llamada">
+          <div class="mock-llamada__cabecera">📞 Llamada entrante <span class="mock-llamada__numero">55 9876 1122</span></div>
+          <div class="mock-llamada__linea"><strong>Estafador:</strong> "Buenas tardes, hablamos del área de fraudes de BBVA. Detectamos una transferencia sospechosa de $12,000 desde su cuenta. Para cancelarla, necesitamos que nos confirme el código de 6 dígitos que le acaba de llegar por mensaje de texto."</div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <span class="bandera-roja">🚩 Pide un código de verificación por teléfono</span>
+          <span class="bandera-roja">🚩 Presión con una supuesta operación fraudulenta</span>
+        </div>
+        <p style="color:var(--gris-700,#3a4354); font-weight:700;">
+          Regla simple: tu banco nunca te va a pedir tu contraseña, tu NIP ni un
+          código de verificación por teléfono, correo o mensaje. Si tienes dudas,
+          cuelga y marca tú mismo al número oficial que está al reverso de tu tarjeta.
+        </p>
+      </div>
+
+      <!-- Paso 5: cuentas y comprobantes falsos -->
+      <div class="tutorial-paso oculto" data-paso="5">
+        <p style="color:var(--gris-700,#3a4354); margin-bottom:4px; font-weight:700;">
+          Así se ve un "comprobante" falso en una venta en línea:
+        </p>
+        <div class="mock-chat">
+          <div class="mock-chat__cabecera">💬 Mensaje de texto · Comprador (desconocido)</div>
+          <div class="mock-chat__burbuja">
+            Ya te deposité los $2,500 del artículo, aquí está mi comprobante. En cuanto confirmes, te paso los datos para que me envíes el paquete 📦
+          </div>
+        </div>
+        <div>
+          <span class="bandera-roja">🚩 Una captura de pantalla se puede falsificar fácilmente</span>
+          <span class="bandera-roja">🚩 Presiona a que actúes antes de confirmar</span>
+        </div>
+        <p style="color:var(--gris-700,#3a4354); font-weight:700; margin-top:14px;">
+          La única forma segura de confirmar un depósito es revisando tu propia
+          cuenta desde tu app bancaria oficial, nunca a partir de una imagen que
+          te envía la otra persona.
+        </p>
+      </div>
+
+      <!-- Paso 6: reglas de oro -->
+      <div class="tutorial-paso oculto" data-paso="6">
+        <ul style="color:var(--gris-700,#3a4354); font-size:1rem; line-height:1.8; padding-left:22px; margin-top:10px;">
+          <li>Tu banco nunca te pide contraseñas, NIP ni códigos por teléfono, correo o mensaje.</li>
+          <li>Desconfía de la urgencia y el miedo: "tu cuenta será bloqueada", "último aviso".</li>
+          <li>Verifica siempre por tu cuenta: la app oficial o el número que está en tu tarjeta.</li>
+          <li>Nunca hagas clic en enlaces de mensajes que no esperabas.</li>
+          <li>Un comprobante se puede falsificar: confirma el dinero directo en tu cuenta.</li>
+        </ul>
+      </div>
+
+      <div class="acciones-paso">
+        <button class="btn btn-secundario" id="btnAtras" disabled>Atrás</button>
+        <button class="btn btn-primario" id="btnSiguiente">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 3 — ÉXITO DEL TUTORIAL
+     ====================================================================== -->
+<section id="vista-exito-tutorial" class="seccion oculto" style="padding-top:64px;">
+  <div class="contenedor" style="max-width:520px;">
+    <div class="pantalla-exito">
+      <img src="../assets/img/thot-celebrando.png" alt="Thot celebrando" class="pantalla-exito__figura">
+      <h2>¡Muy bien! Ya conoces las señales</h2>
+      <p>Ahora vas a revisar una bandeja con varios mensajes reales de ejemplo.
+        Tú decides, uno por uno, cuáles son seguros y cuáles son intentos de
+        estafa. Te diré si acertaste en cada uno.</p>
+      <button class="btn btn-primario btn-grande" id="btnIrPractica">Practicar sin ayuda</button>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 4 — PRÁCTICA REAL: bandeja de mensajes
+     ====================================================================== -->
+<section id="vista-practica" class="seccion oculto" style="padding-top:40px;">
+  <div class="contenedor" style="max-width:760px;">
+    <div class="panel-banca">
+      <div class="panel-banca__titulo">Bandeja de mensajes</div>
+      <div class="panel-banca__subtitulo">Revisa cada mensaje y decide si es seguro o si es phishing. Te diré si acertaste apenas respondas.</div>
+
+      <div class="marcador-score">
+        <span>Mensajes revisados</span>
+        <span class="marcador-score__valor" id="marcadorTexto">0 / 6</span>
+      </div>
+
+      <div class="bandeja-mensajes" id="bandejaMensajes"></div>
+
+      <div class="acciones-paso" style="justify-content:center; margin-top:34px;">
+        <button class="btn btn-primario btn-grande" id="btnVerResultado" disabled>Revisa los 6 mensajes para ver tu resultado</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 5 — ÉXITO FINAL
+     ====================================================================== -->
+<section id="vista-exito-final" class="seccion oculto" style="padding-top:64px;">
+  <div class="contenedor" style="max-width:560px;">
+    <div class="pantalla-exito">
+      <div class="pantalla-exito__check">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none"><path d="M5 13L9 17L19 7" stroke="#388e3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2>¡Práctica completada!</h2>
+      <p id="textoResultadoFinal">Acertaste X de 6 mensajes.</p>
+      <div class="resumen-operacion" style="text-align:left; margin-bottom:26px;">
+        <div class="resumen-operacion__fila" style="display:block; border-bottom:none; padding:6px 0;">
+          <span class="resumen-operacion__etiqueta" style="display:block; margin-bottom:6px;">Recuerda siempre:</span>
+          <span class="resumen-operacion__valor" style="display:block; font-weight:600; text-align:left; color:var(--gris-700,#3a4354);">
+            Tu banco nunca pide contraseñas, NIP ni códigos por teléfono, correo o
+            mensaje. Ante la duda, cuelga y verifica tú mismo en la app oficial o
+            en el número de tu tarjeta.
+          </span>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+        <button class="btn btn-secundario" id="btnRepetir">Practicar de nuevo</button>
+        <a href="../dashboard.html" class="btn btn-primario">Volver a mis prácticas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../assets/js/phishing.js"></script>
+</body>
+</html>
