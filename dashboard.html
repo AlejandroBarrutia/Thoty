@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thoty — Elige tu práctica</title>
+<meta name="description" content="Elige la práctica de banca digital con la que quieres empezar hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="header__inner">
+    <a href="index.html" class="marca">
+      <img src="assets/img/thot-feliz.png" alt="" class="marca__icono">
+      <span class="marca__nombre">Tho<span>ty</span></span>
+    </a>
+    <div class="header__acciones">
+      <a href="index.html" class="btn btn-secundario">Salir</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SALUDO + RESUMEN ============ -->
+<section class="saludo">
+  <div class="contenedor">
+    <div class="saludo__inner">
+      <img src="assets/img/thot-saludando.png" alt="Thot saludando" class="saludo__figura">
+      <div>
+        <h1 class="saludo__titulo">¡Hola, <span id="saludoNombre">amigo</span>! ¿Qué practicamos hoy?</h1>
+        <p class="saludo__texto">Elige una lección. Puedes repetirla las veces que quieras, sin ningún riesgo.</p>
+      </div>
+    </div>
+
+    <div class="resumen">
+      <div class="resumen__tarjeta">
+        <span class="resumen__icono">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12L11 14L15 10" stroke="#388e3c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#388e3c" stroke-width="2"/></svg>
+        </span>
+        <div>
+          <div class="resumen__valor" id="resumenCompletados">0 / 3</div>
+          <div class="resumen__etiqueta">Lecciones completadas</div>
+        </div>
+      </div>
+
+      <div class="resumen__tarjeta">
+        <span class="resumen__icono">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5V11C4 16 7.5 20.5 12 22C16.5 20.5 20 16 20 11V5L12 2Z" stroke="#388e3c" stroke-width="2" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <div class="resumen__valor">100% simulado</div>
+          <div class="resumen__etiqueta">Sin dinero ni datos reales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULOS DISPONIBLES ============ -->
+<section class="seccion" style="padding-top:48px;">
+  <div class="contenedor">
+    <h2 class="seccion__subtitulo-mini">Disponibles ahora</h2>
+
+    <div class="grid-modulos" style="margin-bottom:56px;">
+
+      <article class="tarjeta-modulo tarjeta-modulo--transferencias tarjeta-modulo--activa" id="tarjetaTransferencia">
+        <div class="tarjeta-modulo__icono"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M7 10L3 14L7 18" stroke="#004a97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14H15A6 6 0 0 0 21 8" stroke="#004a97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Transferencia bancaria <span class="badge-completado oculto" id="badgeTransferencia">✓ Completado</span></h3>
+        <p>Practica cómo enviar dinero a otra cuenta, verificar los datos del beneficiario y confirmar la operación con seguridad.</p>
+        <div class="tarjeta-modulo__meta">
+          <span class="tarjeta-modulo__nivel">Nivel inicial</span>
+          <span class="tarjeta-modulo__ejercicios">5 ejercicios</span>
+        </div>
+        <a href="modulos/transferencia.html" class="btn btn-primario btn-bloque tarjeta-modulo__cta">Comenzar</a>
+      </article>
+
+      <article class="tarjeta-modulo tarjeta-modulo--pagos tarjeta-modulo--activa" id="tarjetaPago">
+        <div class="tarjeta-modulo__icono"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 2H18V22L15.5 20L13 22L10.5 20L8 22L6 20V2Z" stroke="#388e3c" stroke-width="2" stroke-linejoin="round"/><path d="M9 8H15M9 12H15M9 16H12" stroke="#388e3c" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Pago de servicios <span class="badge-completado oculto" id="badgePago">✓ Completado</span></h3>
+        <p>Aprende a pagar recibos de luz, agua, teléfono y otros servicios desde tu banca digital, sin confusiones.</p>
+        <div class="tarjeta-modulo__meta">
+          <span class="tarjeta-modulo__nivel">Nivel inicial</span>
+          <span class="tarjeta-modulo__ejercicios">4 ejercicios</span>
+        </div>
+        <a href="modulos/pago-servicios.html" class="btn btn-primario btn-bloque tarjeta-modulo__cta">Comenzar</a>
+      </article>
+
+      <article class="tarjeta-modulo tarjeta-modulo--fraude tarjeta-modulo--activa" id="tarjetaPhishing">
+        <div class="tarjeta-modulo__icono"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5V11C4 16 7.5 20.5 12 22C16.5 20.5 20 16 20 11V5L12 2Z" stroke="#ff9800" stroke-width="2" stroke-linejoin="round"/><path d="M9 12L11 14L15 10" stroke="#ff9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Detecta fraudes y phishing <span class="badge-completado oculto" id="badgePhishing">✓ Completado</span></h3>
+        <p>Aprende a identificar correos, SMS, WhatsApp y llamadas falsas antes de que te engañen, con ejemplos reales.</p>
+        <div class="tarjeta-modulo__meta">
+          <span class="tarjeta-modulo__nivel">Nivel intermedio</span>
+          <span class="tarjeta-modulo__ejercicios">6 ejercicios</span>
+        </div>
+        <a href="modulos/phishing.html" class="btn btn-primario btn-bloque tarjeta-modulo__cta">Comenzar</a>
+      </article>
+
+    </div>
+
+    <h2 class="seccion__subtitulo-mini">Próximamente</h2>
+    <p class="seccion__texto" style="margin-bottom:26px; max-width:640px;">
+      Estas prácticas todavía no están disponibles en esta versión de prueba. Se irán agregando más adelante.
+    </p>
+
+    <div class="grid-modulos">
+
+      <article class="tarjeta-modulo tarjeta-modulo--bloqueada" aria-disabled="true">
+        <div class="candado-flotante">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#6b7686" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tarjeta-modulo__icono"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 10L12 4L21 10" stroke="#6b7686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10V19M10 10V19M14 10V19M19 10V19" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/><path d="M3 19H21" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Transferencia a otros bancos</h3>
+        <p>Enviar dinero a una cuenta de un banco distinto, usando CLABE interbancaria.</p>
+        <span class="etiqueta-bloqueado">No disponible en esta versión prototipo</span>
+      </article>
+
+      <article class="tarjeta-modulo tarjeta-modulo--bloqueada" aria-disabled="true">
+        <div class="candado-flotante">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#6b7686" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tarjeta-modulo__icono"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#6b7686" stroke-width="2"/><path d="M4 21C4 17 7.5 14 12 14C16.5 14 20 17 20 21" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Depósito a cuenta de otra persona</h3>
+        <p>Practicar cómo depositar dinero en la cuenta de un familiar o conocido.</p>
+        <span class="etiqueta-bloqueado">No disponible en esta versión prototipo</span>
+      </article>
+
+      <article class="tarjeta-modulo tarjeta-modulo--bloqueada" aria-disabled="true">
+        <div class="candado-flotante">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#6b7686" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tarjeta-modulo__icono"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 17L9 11L13 15L21 7" stroke="#6b7686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7H21V13" stroke="#6b7686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Cuentas de inversión</h3>
+        <p>Conocer cómo funciona abrir y consultar una cuenta de inversión digital.</p>
+        <span class="etiqueta-bloqueado">No disponible en esta versión prototipo</span>
+      </article>
+
+      <article class="tarjeta-modulo tarjeta-modulo--bloqueada" aria-disabled="true">
+        <div class="candado-flotante">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#6b7686" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tarjeta-modulo__icono"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6b7686" stroke-width="2"/><path d="M12 7V12L15 14" stroke="#6b7686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Depósito a PPR</h3>
+        <p>Aportar a un Plan Personal de Retiro desde la banca digital.</p>
+        <span class="etiqueta-bloqueado">No disponible en esta versión prototipo</span>
+      </article>
+
+      <article class="tarjeta-modulo tarjeta-modulo--bloqueada" aria-disabled="true">
+        <div class="candado-flotante">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#6b7686" stroke-width="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="tarjeta-modulo__icono"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12C4 7.6 7.6 4 12 4C15 4 17.6 5.7 19 8.2M20 12C20 16.4 16.4 20 12 20C9 20 6.4 18.3 5 15.8" stroke="#6b7686" stroke-width="2" stroke-linecap="round"/><path d="M19 4V8.2H14.8M5 20V15.8H9.2" stroke="#6b7686" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Transferencias automáticas</h3>
+        <p>Programar pagos o transferencias que se repiten cada mes, de forma automática.</p>
+        <span class="etiqueta-bloqueado">No disponible en esta versión prototipo</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer__inner" style="border-bottom:none; padding-bottom:0;">
+      <div class="marca">
+        <img src="assets/img/thot-feliz.png" alt="" class="marca__icono">
+        <span class="marca__nombre">Thoty</span>
+      </div>
+    </div>
+    <p class="footer__legal">Thoty es un prototipo educativo desarrollado con fines académicos. No está afiliado a ninguna institución bancaria.</p>
+  </div>
+</footer>
+
+<script>
+  const nombre = sessionStorage.getItem("thoty_nombre");
+  if (nombre) document.getElementById("saludoNombre").textContent = nombre;
+
+  const transferenciaOk = sessionStorage.getItem("thoty_completado_transferencia") === "true";
+  const pagoOk = sessionStorage.getItem("thoty_completado_pago") === "true";
+  const phishingOk = sessionStorage.getItem("thoty_completado_phishing") === "true";
+
+  if (transferenciaOk) {
+    document.getElementById("badgeTransferencia").classList.remove("oculto");
+    document.getElementById("tarjetaTransferencia").querySelector(".tarjeta-modulo__cta").textContent = "Practicar de nuevo";
+  }
+  if (pagoOk) {
+    document.getElementById("badgePago").classList.remove("oculto");
+    document.getElementById("tarjetaPago").querySelector(".tarjeta-modulo__cta").textContent = "Practicar de nuevo";
+  }
+  if (phishingOk) {
+    document.getElementById("badgePhishing").classList.remove("oculto");
+    document.getElementById("tarjetaPhishing").querySelector(".tarjeta-modulo__cta").textContent = "Practicar de nuevo";
+  }
+
+  const total = [transferenciaOk, pagoOk, phishingOk].filter(Boolean).length;
+  document.getElementById("resumenCompletados").textContent = `${total} / 3`;
+</script>
+</body>
+</html>
