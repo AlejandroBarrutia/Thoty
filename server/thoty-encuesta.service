@@ -1,0 +1,23 @@
+[Unit]
+Description=Thoty - servidor de encuestas (guarda respuestas en CSV local)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+Environment=THOTY_ENCUESTA_CSV=/var/www/thoty-data/encuestas.csv
+Environment=THOTY_ENCUESTA_PUERTO=8787
+ExecStart=/usr/bin/python3 /var/www/thoty/server/encuesta_server.py
+Restart=on-failure
+RestartSec=3
+
+# Endurecimiento: el servicio no puede escribir en ningún lado del
+# sistema excepto en la carpeta de datos de la encuesta.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/thoty-data
+
+[Install]
+WantedBy=multi-user.target

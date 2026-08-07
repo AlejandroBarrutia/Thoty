@@ -260,14 +260,114 @@
           </span>
         </div>
       </div>
-      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
-        <button class="btn btn-secundario" id="btnRepetir">Practicar de nuevo</button>
-        <a href="../dashboard.html" class="btn btn-primario">Volver a mis prácticas</a>
-      </div>
+      <button class="btn btn-primario btn-grande" id="btnIrEncuesta">Continuar</button>
     </div>
   </div>
 </section>
 
+<!-- ======================================================================
+     VISTA 6 — ENCUESTA DE SATISFACCIÓN
+     ====================================================================== -->
+<section id="vista-encuesta" class="seccion oculto" style="padding-top:56px;">
+  <div class="contenedor" style="max-width:600px;">
+    <div class="panel-banca">
+      <div style="text-align:center; margin-bottom:8px;">
+        <img src="../assets/img/thot-idea.png" alt="" style="width:90px; margin:0 auto 12px;">
+        <div class="panel-banca__titulo" style="margin-bottom:4px;">¿Cómo te fue con esta práctica?</div>
+        <div class="panel-banca__subtitulo" style="margin-bottom:0;">Tu opinión nos ayuda a mejorar Thoty. Responder toma menos de un minuto.</div>
+      </div>
+
+      <form id="formEncuesta" data-modulo="phishing">
+        <div class="encuesta-pregunta">
+          <label>¿Qué tan fácil fue usar esta práctica?</label>
+          <div class="estrellas">
+            <input type="radio" name="enc_facilidad" id="ef5" value="5"><label for="ef5">★</label>
+            <input type="radio" name="enc_facilidad" id="ef4" value="4"><label for="ef4">★</label>
+            <input type="radio" name="enc_facilidad" id="ef3" value="3"><label for="ef3">★</label>
+            <input type="radio" name="enc_facilidad" id="ef2" value="2"><label for="ef2">★</label>
+            <input type="radio" name="enc_facilidad" id="ef1" value="1"><label for="ef1">★</label>
+          </div>
+        </div>
+
+        <div class="encuesta-pregunta">
+          <label>¿Qué tan claras fueron las explicaciones de Thot?</label>
+          <div class="estrellas">
+            <input type="radio" name="enc_claridad" id="ec5" value="5"><label for="ec5">★</label>
+            <input type="radio" name="enc_claridad" id="ec4" value="4"><label for="ec4">★</label>
+            <input type="radio" name="enc_claridad" id="ec3" value="3"><label for="ec3">★</label>
+            <input type="radio" name="enc_claridad" id="ec2" value="2"><label for="ec2">★</label>
+            <input type="radio" name="enc_claridad" id="ec1" value="1"><label for="ec1">★</label>
+          </div>
+        </div>
+
+        <div class="encuesta-pregunta">
+          <label>¿Qué tan parecidos se sintieron los ejemplos a estafas reales?</label>
+          <div class="estrellas">
+            <input type="radio" name="enc_realismo" id="er5" value="5"><label for="er5">★</label>
+            <input type="radio" name="enc_realismo" id="er4" value="4"><label for="er4">★</label>
+            <input type="radio" name="enc_realismo" id="er3" value="3"><label for="er3">★</label>
+            <input type="radio" name="enc_realismo" id="er2" value="2"><label for="er2">★</label>
+            <input type="radio" name="enc_realismo" id="er1" value="1"><label for="er1">★</label>
+          </div>
+        </div>
+
+        <div class="encuesta-pregunta">
+          <label>¿Qué tanta confianza sientes ahora para detectar un fraude real?</label>
+          <div class="estrellas">
+            <input type="radio" name="enc_confianza" id="eco5" value="5"><label for="eco5">★</label>
+            <input type="radio" name="enc_confianza" id="eco4" value="4"><label for="eco4">★</label>
+            <input type="radio" name="enc_confianza" id="eco3" value="3"><label for="eco3">★</label>
+            <input type="radio" name="enc_confianza" id="eco2" value="2"><label for="eco2">★</label>
+            <input type="radio" name="enc_confianza" id="eco1" value="1"><label for="eco1">★</label>
+          </div>
+        </div>
+
+        <div class="encuesta-pregunta">
+          <label>¿Qué tan probable es que recomiendes Thoty a alguien más?</label>
+          <div class="estrellas">
+            <input type="radio" name="enc_recomendacion" id="er_r5" value="5"><label for="er_r5">★</label>
+            <input type="radio" name="enc_recomendacion" id="er_r4" value="4"><label for="er_r4">★</label>
+            <input type="radio" name="enc_recomendacion" id="er_r3" value="3"><label for="er_r3">★</label>
+            <input type="radio" name="enc_recomendacion" id="er_r2" value="2"><label for="er_r2">★</label>
+            <input type="radio" name="enc_recomendacion" id="er_r1" value="1"><label for="er_r1">★</label>
+          </div>
+        </div>
+
+        <div class="campo-banca" style="margin-top:6px;">
+          <label for="enc_comentario">¿Qué le mejorarías a esta práctica? (opcional)</label>
+          <textarea id="enc_comentario" class="encuesta-textarea" rows="3" placeholder="Cuéntanos qué te gustaría que fuera diferente o más claro..."></textarea>
+        </div>
+
+        <div class="acciones-paso">
+          <button type="button" class="btn btn-secundario" id="btnOmitirEncuesta">Omitir por ahora</button>
+          <button type="submit" class="btn btn-primario btn-grande">Enviar encuesta</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     VISTA 7 — CIERRE (agradecimiento)
+     ====================================================================== -->
+<section id="vista-cierre" class="seccion oculto" style="padding-top:64px;">
+  <div class="contenedor" style="max-width:520px;">
+    <div class="pantalla-exito">
+      <div class="pantalla-exito__check">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none"><path d="M5 13L9 17L19 7" stroke="#388e3c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 id="tituloCierre">¡Gracias!</h2>
+      <p id="textoCierre">Puedes repetir esta práctica las veces que quieras.</p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:20px;">
+        <button class="btn btn-secundario" id="btnRepetir">Practicar de nuevo</button>
+        <a href="../dashboard.html" class="btn btn-primario">Volver a mis prácticas</a>
+      </div>
+      <button type="button" class="btn-enlace" id="btnDescargarEncuestas">⬇ Descargar respuestas de la encuesta</button>
+    </div>
+  </div>
+</section>
+
+<script src="../assets/js/encuesta.js"></script>
 <script src="../assets/js/phishing.js"></script>
 </body>
 </html>

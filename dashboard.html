@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/banca.css">
 </head>
 <body>
 
@@ -159,6 +160,10 @@
       </article>
 
     </div>
+
+    <div class="oculto" id="bloqueDescargaEncuestas" style="text-align:center; margin-top:36px;">
+      <button type="button" class="btn-enlace" id="btnDescargarEncuestasDashboard">⬇ Descargar mis respuestas de la encuesta (<span id="contadorEncuestas">0</span>)</button>
+    </div>
   </div>
 </section>
 
@@ -175,6 +180,7 @@
   </div>
 </footer>
 
+<script src="assets/js/encuesta.js"></script>
 <script>
   const nombre = sessionStorage.getItem("thoty_nombre");
   if (nombre) document.getElementById("saludoNombre").textContent = nombre;
@@ -198,6 +204,13 @@
 
   const total = [transferenciaOk, pagoOk, phishingOk].filter(Boolean).length;
   document.getElementById("resumenCompletados").textContent = `${total} / 3`;
+
+  const totalEncuestas = contarEncuestas();
+  if (totalEncuestas > 0) {
+    document.getElementById("contadorEncuestas").textContent = totalEncuestas;
+    document.getElementById("bloqueDescargaEncuestas").classList.remove("oculto");
+  }
+  document.getElementById("btnDescargarEncuestasDashboard").addEventListener("click", descargarEncuestas);
 </script>
 </body>
 </html>

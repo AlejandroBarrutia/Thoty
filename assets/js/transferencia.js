@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     practica: document.getElementById("vista-practica"),
     revision: document.getElementById("vista-revision"),
     exitoFinal: document.getElementById("vista-exito-final"),
+    encuesta: document.getElementById("vista-encuesta"),
+    cierre: document.getElementById("vista-cierre"),
   };
 
   function mostrar(nombreVista) {
@@ -37,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btnIrPractica").addEventListener("click", () => mostrar("practica"));
   document.getElementById("btnRepetir").addEventListener("click", () => {
     document.getElementById("formPractica").reset();
+    document.getElementById("formEncuesta").reset();
     limpiarErrores();
     mostrar("practica");
   });
@@ -184,6 +187,34 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.setItem("thoty_completado_transferencia", "true");
     mostrar("exitoFinal");
   });
+
+  // ---------- ENCUESTA DE SATISFACCIÓN ----------
+
+  document.getElementById("btnIrEncuesta").addEventListener("click", () => mostrar("encuesta"));
+
+  document.getElementById("formEncuesta").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const calificaciones = {
+      facilidad: leerEstrellas("enc_facilidad"),
+      claridad: leerEstrellas("enc_claridad"),
+      realismo: leerEstrellas("enc_realismo"),
+      confianza: leerEstrellas("enc_confianza"),
+      recomendacion: leerEstrellas("enc_recomendacion"),
+    };
+    const comentario = document.getElementById("enc_comentario").value;
+    guardarEncuesta("transferencia", calificaciones, comentario);
+    document.getElementById("tituloCierre").textContent = "¡Gracias por tu opinión!";
+    document.getElementById("textoCierre").textContent = "Nos ayuda mucho a mejorar Thoty. Puedes repetir esta práctica las veces que quieras.";
+    mostrar("cierre");
+  });
+
+  document.getElementById("btnOmitirEncuesta").addEventListener("click", () => {
+    document.getElementById("tituloCierre").textContent = "¡Listo!";
+    document.getElementById("textoCierre").textContent = "Puedes repetir esta práctica las veces que quieras.";
+    mostrar("cierre");
+  });
+
+  document.getElementById("btnDescargarEncuestas").addEventListener("click", descargarEncuestas);
 
   // arranque
   mostrar("intro");
