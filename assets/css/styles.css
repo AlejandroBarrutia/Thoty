@@ -1060,8 +1060,33 @@ ul {
     grid-template-columns: 1fr;
   }
 
+  /*
+    La cabecera es flex sin gap ni wrap: en un teléfono la marca y el botón de
+    salida no caben en una línea y se encimaban uno sobre otro.
+
+    Se reducen ambos para que quepan, y se deja `flex-wrap` como red de
+    seguridad: si con la letra del sistema aumentada siguen sin caber, el botón
+    baja a una segunda línea en lugar de montarse sobre el logo.
+  */
   .header__inner {
-    padding: 14px 20px;
+    padding: 12px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .marca__icono {
+    width: 38px;
+    height: 38px;
+  }
+
+  .marca__nombre {
+    font-size: 1.3rem;
+  }
+
+  /* Sigue por encima de 44px de alto: es la salida de la simulación. */
+  .header__acciones .btn {
+    padding: 12px 18px;
+    font-size: 0.95rem;
   }
 
   .contenedor {

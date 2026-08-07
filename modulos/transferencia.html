@@ -138,7 +138,7 @@
 
   <div class="banca-fondo">
     <div class="banca-contenedor">
-      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; align-items:start;">
+      <div class="banca-columnas">
         <div>
           <div class="mis-cuentas">
             <div class="mis-cuentas__titulo">Mis Cuentas</div>
@@ -238,8 +238,9 @@
         <div class="campo-banca tutorial-paso" data-paso="1">
           <label for="t_origen">Cuenta de origen</label>
           <select id="t_origen">
-            <option>Cuenta de Débito •••• 4521 — Saldo $12,480.00</option>
+            <option>Cuenta de Débito •••• 4521</option>
           </select>
+          <p class="campo-banca__saldo">Saldo disponible: <strong>$12,480.00</strong></p>
         </div>
 
         <!-- Paso 2: cuenta destino -->
@@ -356,8 +357,9 @@
           <div class="campo-banca">
             <label for="p_origen">Cuenta de origen</label>
             <select id="p_origen">
-              <option>Cuenta de Débito •••• 4521 — Saldo $12,480.00</option>
+              <option>Cuenta de Débito •••• 4521</option>
             </select>
+            <p class="campo-banca__saldo">Saldo disponible: <strong>$12,480.00</strong></p>
           </div>
 
           <div class="campo-banca" id="grupoClabe">

@@ -114,6 +114,15 @@
 .banca-nav {
   background: var(--bbva-azul);
   display: flex;
+  /*
+    Envuelve en varias líneas cuando no caben las pestañas. Sin esto, en un
+    teléfono la fila se extendía hasta 721px y empujaba toda la página a
+    desplazamiento horizontal.
+
+    Se prefiere envolver antes que un carril con scroll interno: `overflow-x`
+    recortaría verticalmente los menús desplegables de cada pestaña.
+  */
+  flex-wrap: wrap;
   padding: 0 24px;
   position: relative;
   z-index: 40;
@@ -168,6 +177,18 @@
   min-width: 300px;
   padding: 10px 0;
   display: none;
+  /*
+    Las pestañas son hermanas con `position: relative` y sin z-index, así que
+    las posteriores se pintaban ENCIMA de este panel. Se veía sobre todo al
+    envolver la barra en varias líneas: las pestañas de abajo atravesaban el
+    menú abierto.
+  */
+  z-index: 60;
+}
+
+/* Además del panel, se eleva la pestaña abierta con su fondo resaltado. */
+.banca-nav__item.abierto {
+  z-index: 50;
 }
 
 .banca-nav__item.abierto .banca-nav__dropdown {
@@ -416,6 +437,20 @@
   margin-top: 24px;
 }
 
+/*
+  Columna principal + columna lateral de la pantalla de inicio del banco.
+
+  Estaba como estilo en línea en el HTML, donde ninguna media query podía
+  sobrescribirlo: en teléfono quedaban 248px y 142px lado a lado y el texto se
+  partía palabra por palabra ("Cuenta / de / Débito").
+*/
+.banca-columnas {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
 .acceso-rapido {
   background: #fff;
   border: 1px solid var(--bbva-gris-borde);
@@ -519,6 +554,32 @@
   font-size: 0.88rem;
   color: var(--bbva-gris-texto);
   margin-top: 6px;
+}
+
+/*
+  Saldo de la cuenta de origen.
+
+  Vive FUERA del <select>: un desplegable nativo no envuelve el texto de sus
+  opciones, así que en un teléfono el monto quedaba cortado justo después de la
+  palabra "Saldo" y la persona no podía ver de cuánto disponía.
+
+  Aquí se lee completo en cualquier ancho, y además queda visible sin tener que
+  abrir el desplegable.
+*/
+.campo-banca__saldo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 1rem;
+  color: var(--bbva-gris-texto);
+}
+
+.campo-banca__saldo strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--bbva-azul);
 }
 
 .campo-banca__error {
@@ -1187,6 +1248,41 @@
 
   .accesos-rapidos {
     grid-template-columns: 1fr;
+  }
+
+  /* Una sola columna: en teléfono el contenido necesita todo el ancho. */
+  .banca-columnas {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Menos aire lateral para que quepa una pestaña más por línea. */
+  .banca-nav {
+    padding: 0 8px;
+  }
+
+  .banca-nav__boton {
+    padding: 13px 12px;
+  }
+
+  /*
+    En teléfono el panel se ancla a la barra completa, no a su pestaña: con
+    `position: static` en la pestaña, el `absolute` del panel se resuelve contra
+    `.banca-nav`.
+
+    Así el menú baja por debajo de TODAS las filas de pestañas y ocupa el ancho
+    disponible, en vez de salir a media barra tapando las de abajo y desbordarse
+    por la derecha con sus 300px mínimos.
+  */
+  .banca-nav__item {
+    position: static;
+  }
+
+  .banca-nav__dropdown {
+    left: 8px;
+    right: 8px;
+    min-width: 0;
+    border-radius: 0 0 14px 14px;
   }
 
   .banca-topbar__usuario span.solo-desktop {
