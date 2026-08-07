@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=www-data
 Group=www-data
-Environment=THOTY_ENCUESTA_CSV=/var/www/thoty-data/encuestas.csv
+Environment=THOTY_ENCUESTA_CSV=/mnt/archivos-compartidos/thoty-encuestas/encuestas.csv
 Environment=THOTY_ENCUESTA_PUERTO=8787
 ExecStart=/usr/bin/python3 /var/www/thoty/server/encuesta_server.py
 Restart=on-failure
@@ -17,7 +17,7 @@ RestartSec=3
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
-ReadWritePaths=/var/www/thoty-data
+ReadWritePaths=/mnt/archivos-compartidos/thoty-encuestas
 
 [Install]
 WantedBy=multi-user.target

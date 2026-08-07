@@ -104,3 +104,22 @@ a ese CSV — sin que nadie tenga que descargar ni reenviar nada.
 - Considera respaldar `/var/www/thoty-data/encuestas.csv` de vez en
   cuando (por ejemplo, con un cron que lo copie a otra carpeta), ya que
   hoy es la única copia "dura" de las respuestas del piloto.
+
+## Nota de este despliegue: CSV movido a un share NFS del NAS
+
+En el LXC donde corre este servicio (`ai-inference`, 192.168.68.4), el
+CSV **no** vive en `/var/www/thoty-data` como en los pasos genericos de
+arriba -- vive en un share NFS del NAS (`Archivos_Compartidos`, montado
+en el host Proxmox y expuesto al LXC via bind mount, mismo patron que
+otros shares del proyecto), para que las respuestas sobrevivan aunque se
+reconstruya el LXC. Reflejado en `thoty-encuesta.service`:
+
+```
+Environment=THOTY_ENCUESTA_CSV=/mnt/archivos-compartidos/thoty-encuestas/encuestas.csv
+ReadWritePaths=/mnt/archivos-compartidos/thoty-encuestas
+```
+
+Si se reconstruye este LXC desde cero, el mount `mp3` (bind mount al
+share del NAS) debe recrearse antes de reinstalar el servicio -- de lo
+contrario, seguir los pasos genericos de este README (CSV local) tal cual
+estan escritos arriba.
