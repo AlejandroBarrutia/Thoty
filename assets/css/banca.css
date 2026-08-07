@@ -1103,6 +1103,48 @@
   border-radius: 4px;
 }
 
+.escala-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.escala-opcion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid var(--bbva-gris-borde);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bbva-azul-oscuro);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.escala-opcion input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--bbva-azul);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.escala-opcion:hover {
+  border-color: var(--bbva-azul);
+}
+
+.escala-opcion:has(input:checked) {
+  border-color: var(--bbva-azul);
+  background-color: rgba(9, 79, 164, 0.08);
+}
+
+.escala-opcion:has(input:focus-visible) {
+  outline: 2px solid var(--bbva-azul);
+  outline-offset: 2px;
+}
+
 .encuesta-textarea {
   width: 100%;
   font-family: inherit;

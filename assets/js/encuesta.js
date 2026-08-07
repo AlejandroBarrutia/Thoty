@@ -66,6 +66,7 @@ function descargarEncuestas() {
   const encabezados = [
     "modulo", "fecha", "nombre", "edad",
     "facilidad_uso", "claridad_explicaciones", "realismo", "confianza_ganada", "recomendacion",
+    "intencion_pago",
     "comentario",
   ];
 
@@ -81,6 +82,7 @@ function descargarEncuestas() {
     r.calificaciones?.realismo ?? "",
     r.calificaciones?.confianza ?? "",
     r.calificaciones?.recomendacion ?? "",
+    r.calificaciones?.intencion_pago ?? "",
     r.comentario,
   ].map(escaparCsv).join(","));
 

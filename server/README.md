@@ -79,7 +79,7 @@ sudo systemctl reload caddy
 ```bash
 curl -X POST https://thoty.duckdns.org/api/encuesta \
   -H "Content-Type: application/json" \
-  -d '{"modulo":"transferencia","calificaciones":{"facilidad":5,"claridad":4,"realismo":5,"confianza":4,"recomendacion":5},"comentario":"prueba"}'
+  -d '{"modulo":"transferencia","calificaciones":{"facilidad":5,"claridad":4,"realismo":5,"confianza":4,"recomendacion":5,"intencion_pago":4},"comentario":"prueba"}'
 # {"ok": true}
 
 cat /var/www/thoty-data/encuestas.csv

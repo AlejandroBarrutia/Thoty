@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       realismo: leerEstrellas("enc_realismo"),
       confianza: leerEstrellas("enc_confianza"),
       recomendacion: leerEstrellas("enc_recomendacion"),
+      intencion_pago: leerEstrellas("enc_intencion_pago"),
     };
     const comentario = document.getElementById("enc_comentario").value;
     guardarEncuesta("transferencia", calificaciones, comentario);

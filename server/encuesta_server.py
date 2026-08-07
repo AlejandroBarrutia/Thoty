@@ -32,7 +32,7 @@ HOST = "127.0.0.1"  # nunca 0.0.0.0: solo el propio servidor (Caddy) debe llegar
 CAMPOS = [
     "modulo", "fecha_recibido_utc", "fecha_navegador", "nombre", "edad",
     "facilidad_uso", "claridad_explicaciones", "realismo",
-    "confianza_ganada", "recomendacion", "comentario",
+    "confianza_ganada", "recomendacion", "intencion_pago", "comentario",
 ]
 
 MODULOS_VALIDOS = {"transferencia", "pago-servicios", "phishing"}
@@ -128,6 +128,7 @@ class Handler(BaseHTTPRequestHandler):
             calificacion_valida(calif.get("realismo")),
             calificacion_valida(calif.get("confianza")),
             calificacion_valida(calif.get("recomendacion")),
+            calificacion_valida(calif.get("intencion_pago")),
             sanitizar_texto(cuerpo.get("comentario"), 1000),
         ]
 
